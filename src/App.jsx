@@ -1,22 +1,25 @@
 import './App.css';
+import Login from './views/Login/Login';
+import Profile from './views/Profile/Profile';
+import Register from './views/Register/Register';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 export default function App() {
   return (
-    <h1
-      className={`
-      bg-green-400
-        text-3xl
-        text-center
-      text-white
-        font-bold
-        p-10
-        w-1/2
-        mx-auto
-        mt-10
-        myCustomCssClass
-      `}
-    >
-      Hello, World!
-    </h1>
+    <div>
+      <Router>
+        <Switch>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/register">
+            <Register />
+          </Route>
+          <Route exact path="/">
+            <Profile />
+          </Route>
+        </Switch>
+      </Router>
+    </div>
   );
 }
