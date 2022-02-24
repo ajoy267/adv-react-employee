@@ -6,7 +6,9 @@ export default function Header() {
   const { user } = useUser();
   return (
     <header>
-      <h2>ACME Employee Directory</h2>
+      <Link to="/">
+        <h2>ACME Employee Directory</h2>
+      </Link>
       <p>{user?.email ? 'Signed in' : 'Not Signed In'}</p>
       <Link to="/login">
         <button>Sign In</button>

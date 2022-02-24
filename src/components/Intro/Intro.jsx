@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default function Intro() {
   return (
-    <main>
+    <div>
       <h1>Welcome to the Acme Employee Directory</h1>
       <p>
         As an employee of Acme, you are entitled to a lot of benefits that can
@@ -14,6 +14,6 @@ export default function Intro() {
         <Link to="/register">Create Account</Link> or{' '}
         <Link to="/login">Sign In</Link>
       </p>
-    </main>
+    </div>
   );
 }

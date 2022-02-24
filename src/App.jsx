@@ -1,25 +1,30 @@
 import './App.css';
-import Login from './views/Login/Login';
 import Profile from './views/Profile/Profile';
-import Register from './views/Register/Register';
 import Home from './views/Home/Home';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { UserProvider } from './context/UserContext';
+import Header from './components/Layout/Header';
+import Auth from './views/Auth/Auth';
+import ConfirmEmail from './views/Auth/ConfirmEmail';
 
 export default function App() {
   return (
-    <div>
+    <main>
       <UserProvider>
         <Router>
+          <Header />
           <Switch>
             <Route exact path="/">
               <Home />
             </Route>
             <Route path="/login">
-              <Login />
+              <Auth />
             </Route>
             <Route path="/register">
-              <Register />
+              <Auth />
+            </Route>
+            <Route path="/confirm-email">
+              <ConfirmEmail />
             </Route>
             <Route path="/profile">
               <Profile />
@@ -27,6 +32,6 @@ export default function App() {
           </Switch>
         </Router>
       </UserProvider>
-    </div>
+    </main>
   );
 }
