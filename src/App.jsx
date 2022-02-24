@@ -6,6 +6,7 @@ import { UserProvider } from './context/UserContext';
 import Header from './components/Layout/Header';
 import Auth from './views/Auth/Auth';
 import ConfirmEmail from './views/Auth/ConfirmEmail';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 export default function App() {
   return (
@@ -26,9 +27,9 @@ export default function App() {
             <Route path="/confirm-email">
               <ConfirmEmail />
             </Route>
-            <Route path="/profile">
+            <PrivateRoute path="/profile">
               <Profile />
-            </Route>
+            </PrivateRoute>
           </Switch>
         </Router>
       </UserProvider>
