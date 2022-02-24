@@ -4,7 +4,7 @@ import { signOutUser } from '../../services/user';
 import { useUser } from '../../context/UserContext';
 
 export default function AuthButton() {
-  const { user } = useUser();
+  const { user, setUser } = useUser();
   return (
     <div>
       {user?.email ? (
