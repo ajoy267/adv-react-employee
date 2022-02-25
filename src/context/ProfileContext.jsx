@@ -11,15 +11,13 @@ function ProfileProvider({ children }) {
     birthday: '',
   });
 
-  const value = useMemo(() => {
-    profile, setProfile;
-  }, [profile]);
-
   useEffect(() => {
     const fetchProfile = async () => {
       try {
         const resp = await getProfile();
-        setProfile(resp);
+        if (resp.length > 0) {
+          setProfile(resp);
+        }
       } catch (error) {
         setProfile({ name: '', email: '', bio: '', birthday: '' });
       }
@@ -28,7 +26,9 @@ function ProfileProvider({ children }) {
   }, []);
 
   return (
-    <ProfileContext.Provider value={value}>{children}</ProfileContext.Provider>
+    <ProfileContext.Provider value={{ profile }}>
+      {children}
+    </ProfileContext.Provider>
   );
 }
 
