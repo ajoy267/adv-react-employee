@@ -11,8 +11,10 @@ jobs:
         fetch-depth: 2
     - uses: actions/setup-node@v1
       with:
-        node-version: '14.x'
+        node-version: '16.x'
     - run: npm ci
     - run: npm test
       env:
+      REACT_APP_SUPABASE_URL: ${{secrets.REACT_APP_SUPABASE_URL}}
+      REACT_APP_SUPABASE_KEY: ${{secrets.REACT_APP_SUPABASE_KEY}}
         CI: true

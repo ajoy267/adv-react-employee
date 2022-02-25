@@ -1,9 +1,9 @@
 /*
   Example of using Tailwind classes in a CSS file:
 */
-body {
+/* body {
   @apply bg-slate-800;
-}
+} */
 
 /*
   This template also provides the ability to use CSS classes for custom styling:
