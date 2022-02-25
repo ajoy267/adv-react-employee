@@ -1,9 +1,12 @@
-import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { getProfile } from '../services/profiles';
+import { useUser } from './UserContext';
 
 const ProfileContext = createContext();
 
 function ProfileProvider({ children }) {
+  const [loading, setLoading] = useState(false);
+  const { user } = useUser();
   const [profile, setProfile] = useState({
     name: '',
     email: '',
@@ -13,20 +16,22 @@ function ProfileProvider({ children }) {
 
   useEffect(() => {
     const fetchProfile = async () => {
+      setLoading(true);
       try {
         const resp = await getProfile();
         if (resp.length > 0) {
-          setProfile(resp);
+          setProfile(resp[0]);
         }
       } catch (error) {
         setProfile({ name: '', email: '', bio: '', birthday: '' });
       }
     };
     fetchProfile();
-  }, []);
+    setLoading(false);
+  }, [user]);
 
   return (
-    <ProfileContext.Provider value={{ profile }}>
+    <ProfileContext.Provider value={{ profile, setProfile, loading }}>
       {children}
     </ProfileContext.Provider>
   );
