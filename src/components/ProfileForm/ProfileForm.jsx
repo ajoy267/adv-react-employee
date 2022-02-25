@@ -65,8 +65,7 @@ export default function ProfileForm({ onSubmit, makingProfile }) {
               type="email"
               name="email"
               disabled={true}
-              placeholder={user.email}
-              value={formState.email}
+              value={user.email}
               onChange={handleFormChange}
             />
           </section>

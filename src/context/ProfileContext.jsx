@@ -19,6 +19,7 @@ function ProfileProvider({ children }) {
       setLoading(true);
       try {
         const resp = await getProfile();
+        console.log('resp', resp);
         if (resp.length > 0) {
           setProfile(resp[0]);
         }
