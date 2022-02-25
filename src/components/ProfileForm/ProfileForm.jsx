@@ -35,6 +35,7 @@ export default function ProfileForm({ onSubmit, makingProfile }) {
       setFormError(e.message);
     } finally {
       setLoading(false);
+      history.push('/profile');
     }
   };
 
