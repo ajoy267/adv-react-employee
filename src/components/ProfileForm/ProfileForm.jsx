@@ -2,10 +2,14 @@ import React, { useState } from 'react';
 import { useUser } from '../../context/UserContext';
 import { useForm } from '../../hooks/useForm';
 import { useProfile } from '../../context/ProfileContext';
+import { useHistory } from 'react-router-dom';
 
-export default function ProfileForm(onSubmit) {
+export default function ProfileForm({ onSubmit, makingProfile }) {
   const { user } = useUser();
   const { profile } = useProfile();
+  const history = useHistory();
+  const [loading, setLoading] = useState(false);
+
   const { formState, handleFormChange, setFormError, formError } = useForm(
     profile
       ? {
@@ -21,7 +25,6 @@ export default function ProfileForm(onSubmit) {
           bio: '',
         }
   );
-  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,6 +36,10 @@ export default function ProfileForm(onSubmit) {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleBackButton = () => {
+    history.push('/profile');
   };
 
   return (
@@ -84,6 +91,9 @@ export default function ProfileForm(onSubmit) {
           </section>
           <button type="submit">Submit</button>
           {formError && <p>{formError}</p>}
+          {!makingProfile && (
+            <button onClick={handleBackButton}>Back to Profile</button>
+          )}
         </form>
       )}
     </div>
