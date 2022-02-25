@@ -13,9 +13,9 @@ export default function SignInForm({ onSubmit, label = 'Authenticate' }) {
     const { email, password } = formState;
 
     try {
-      if (!email || password.length < 5)
+      if (!email || password.length < 8)
         throw new Error(
-          'an email and password (with 5+ characters) are required.'
+          'an email and password (with 8+ characters) are required.'
         );
       setLoading(true);
       await onSubmit(email, password);
